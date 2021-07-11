@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>booking-petslove</title>
+    <link rel="stylesheet" href={% static "style.css" %} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="product">
+      <div class="container">
+        <div class="navbar">
+          <div class="logo">
+            <img src={% static "images/logo.png" %} width="80px" />
+          </div>
+          <nav>
+            <ul id="menuitems">
+              <li><a href="{% url 'index' %}">home</a></li>
+              <li><a href="{% url 'booking' %}">booking</a></li>
+              <li><a href="" onclick="alert('contact us via social media its down on the page');">about</a></li>
+              <li><a href="{% url 'register' %}">account</a></li>
+            </ul>
+          </nav>
+          <img src={% static  "images/no.png" %} width="40px" height="30px" />
+          <img
+            src={% static  "images/menu.png" %}
+            width="40px"
+            height="30px"
+            class="menu-icon"
+            onclick="menutoggle()"
+          />
+        </div>
+       
+    <!-------------account--------------->
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-container">
+                        
+                        {% block content %}
+
+                        {% endblock  %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+               
+    
+    <!----footer-->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-1">
+            <h3>download our app</h3>
+            <img src={% static "images/play-store.png" %} />
+            <p>download app for android</p>
+          </div>
+          <div class="footer-col-2">
+            <center>Follow us</center>
+            <ul>
+              <li><i class="fa fa-facebook-square">&nbsp;</i>facebook</li>
+              <li><i class="fa fa-instagram"></i>&nbsp;instagram</li>
+              <li>
+                <i class="fa fa-twitter-square" aria-hidden="true"></i
+                >&nbsp;twitter
+              </li>
+              <li>
+                <i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;whatsapp
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+   
+    <script>
+      var menuitems = document.getElementById("menuitems");
+      menuitems.style.maxHeight = "0px";
+      function menutoggle() {
+        if (menuitems.style.maxHeight == "0px") {
+          menuitems.style.maxHeight = "400px";
+        } else {
+          menuitems.style.maxHeight = "0px";
+        }
+      }
+    </script>
+    <!----indicator--->
+   
+
+    <style>
+      @media only screen and (max-width: 800px) {
+        nav ul {
+          position: absolute;
+          top: 80px;
+          left:0;
+          background: rgb(59, 59, 59);
+          width: 100%;
+          overflow: hidden;
+          transition: max-height 0.8s;
+        }
+        nav ul li{
+          display: inline;
+        }
+      }
+
+    </style>
+   
+    
+
+  </body>
+</html>

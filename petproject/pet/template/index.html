@@ -1,0 +1,248 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>petslove</title>
+    <link rel="stylesheet" type="text/css" href={% static "style.css" %} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <div class="container">
+        <div class="navbar">
+          <div class="logo">
+            <img src={% static "images/logo.png" %} width="80px" />
+          </div>
+          <nav>
+            <ul id="menuitems">
+              <li><a href="">home</a></li>
+
+              <li><a href="booking.html">booking</a></li>
+              <li><a href="" onclick="alert('contact us via social media its down on the page');">about</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="logout">{{user.username}}&#8594;logout</a></li>
+              {% else %}
+              <li><a href="register">Account</a></li>
+              {% endif %}
+            </ul>
+          </nav>
+          <img src={% static "images/no.png" %} width="40px" height="30px" />
+          <img src={% static "images/menu.png" %} width="40px" height="30px"
+          class="menu-icon" onclick="menutoggle()" />
+        </div>
+        <div class="row">
+          <div class="col-2">
+            <h1>
+              Book your puppies <br />
+              own your pet!
+            </h1>
+            <p>
+              we are proving a best quality puppies from an best sellers,<br />its
+              our pleasure to provide a quality pets <br />so follow us and get
+              ur right needed pets
+              <br />
+              <a href="booking.html" class="button">Explore now &#8594;</a>
+            </p>
+          </div>
+          <div class="col-2">
+            <img src={% static "images/image1.png" %} alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!---------------------------->
+    <div class="categories">
+      <div class="smallcontainer">
+        <div class="row">
+          <div class="col-3"><img src={% static "images/dog1.jpg" %} /></div>
+          <div class="col-3"><img src={% static "images/dog2.jpg" %} /></div>
+          <div class="col-3"><img src={% static "images/dog4.jpg" %} /></div>
+        </div>
+      </div>
+    </div>
+    <!----------------------puppies-->
+    <div class="smallcontainer">
+      <hr />
+      <h2 class="title">breeds of puppies available</h2>
+      <div class="row">
+        {% for pup in dogs %}
+        <div class="col-4">
+          <img src="{{pup.image.url}}" />
+          <h4>{{pup.name}}</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <span>Quality</span>
+          </div>
+          <p>{{pup.price}}</p>
+        </div>
+        {% endfor %}
+      </div>
+      <hr />
+      <h2 class="title">Exclusive exotic birds</h2>
+      <div class="row">
+        <div class="col-4">
+          <img src={% static "images/bird1.jpg" %} />
+          <h4>lovebirds</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <span>Quality</span>
+          </div>
+          <p>400rs</p>
+        </div>
+        <div class="col-4">
+          <img src={% static "images/pet2.jpg" %} />
+          <h4>dove</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <span>Quality</span>
+          </div>
+          <p>500rs</p>
+        </div>
+        <div class="col-4">
+          <img src={% static "images/bird3.jpg" %} />
+          <h4>finches</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <span>Quality</span>
+          </div>
+          <p>500rs</p>
+        </div>
+        <div class="col-4">
+          <img src={% static "images/pet4.jpg" %} />
+          <h4>suncorne</h4>
+          <div class="rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <span>Quality</span>
+          </div>
+          <p>3k</p>
+        </div>
+      </div>
+    </div>
+    <!------offer---->
+    <div class="offer">
+      <div class="container">
+        <div class="row">
+          <div class="col-2"><img src={% static "images/cod.png" %} /></div>
+          <div class="col-2">
+            <h1>Cash on delivery all over Tamilnadu</h1>
+            <p>
+              after booking payment we will reach u soon at your doorstep with
+              our best option to ensure safety
+              <a href="" class="button">book now &#8594;</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--------testimonials-->
+    <div class="testimonial">
+      <div class="smallcontainer">
+        <div class="row">
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>
+              i purchased an budjie they are having variety of colors and
+              healthy birds i am happy to get this birds
+            </p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i><span>&nbsp;&nbsp;<b>-karthik</b></span>
+            </div>
+          </div>
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>
+              dog quality is really awesome i got with in 3 days and also they
+              provided me a best choice
+            </p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i><span>&nbsp;&nbsp;<b>-bala</b></span>
+            </div>
+          </div>
+          <div class="col-3">
+            <i class="fa fa-quote-left"></i>
+            <p>
+              just i payed booked amount after i got puppy on home delivery with
+              super fast safety deliver
+            </p>
+            <div class="rating">
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i><span>&nbsp;&nbsp;<b>-dinesh</b></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!----footer-->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col-1">
+            <h3>download our app</h3>
+            <img src= {% static "images/play-store.png" %} />
+            <p>download app for android</p>
+          </div>
+          <div class="footer-col-2">
+            <center>Follow us</center>
+            <ul>
+              <li><i class="fa fa-facebook-square">&nbsp;</i>facebook</li>
+              <li><i class="fa fa-instagram"></i>&nbsp;instagram</li>
+              <li>
+                <i class="fa fa-twitter-square" aria-hidden="true"></i
+                >&nbsp;twitter
+              </li>
+              <li>
+                <i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;whatsapp
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      var menuitems = document.getElementById("menuitems");
+      menuitems.style.maxHeight = "0px";
+      function menutoggle() {
+        if (menuitems.style.maxHeight == "0px") {
+          menuitems.style.maxHeight = "400px";
+        } else {
+          menuitems.style.maxHeight = "0px";
+        }
+      }
+    </script>
+  </body>
+</html>
